@@ -4,38 +4,24 @@ import org.junit.Test;
 
 import org.junit.Assert;
 
+import static org.hamcrest.Matchers.closeTo;
+import static org.junit.Assert.assertThat;
+
 public class PointTest {
 
     @Test
-    public void when00to20then2() {
-        int expected = 2;
-        int x1 = 0;
-        int y1 = 0;
-        int x2 = 2;
-        int y2 = 0;
-        double out = Point.distance(x1, y1, x2, y2);
-        Assert.assertEquals(expected, out, 0.01);
+    public void when2d() {
+        Point a = new Point(0, 0);
+        Point b = new Point(4, 0);
+        double rsl = a.distance(b);
+        assertThat(rsl, closeTo(4, 0.001));
     }
 
     @Test
-    public void when55to55then0() {
-        int expected = 0;
-        int x1 = 5;
-        int y1 = 5;
-        int x2 = 5;
-        int y2 = 5;
-        double out = Point.distance(x1, y1, x2, y2);
-        Assert.assertEquals(expected, out, 0.01);
-    }
-
-    @Test
-    public void when1010tom2m2then2() {
-        double expected = 16.97;
-        int x1 = 10;
-        int y1 = 10;
-        int x2 = -2;
-        int y2 = -2;
-        double out = Point.distance(x1, y1, x2, y2);
-        Assert.assertEquals(expected, out, 0.01);
+    public void when3d() {
+        Point a = new Point(45, 27, 3);
+        Point b = new Point(7, 2, 42);
+        double rsl = a.distance3d(b);
+        assertThat(rsl, closeTo(59.916, 0.001));
     }
 }
